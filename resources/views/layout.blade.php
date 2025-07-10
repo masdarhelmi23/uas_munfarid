@@ -13,17 +13,27 @@
     <style>
         /* CSS kecil ini hanya untuk memastikan font Google terpakai jika Anda menambahkannya */
         /* Ini BUKAN CSS KUSTOM untuk desain, hanya untuk font */
-        body {
-            font-family: 'Open Sans', sans-serif;
+        html, body {
+            /* Menambahkan latar belakang ringan ke body untuk tampilan modern */
+            background-color: hsl(0, 0%, 96%); /* Setara dengan #f5f5f5 */
+            min-height: 100vh; /* Pastikan body mengisi tinggi viewport */
+            display: flex;
+            flex-direction: column;
         }
         .navbar-item b, .title {
             font-family: 'Montserrat', sans-serif;
         }
+        body {
+            font-family: 'Open Sans', sans-serif;
+        }
+        .footer {
+            margin-top: auto; /* Mendorong footer ke bawah */
+        }
     </style>
 </head>
 <body>
-    <div class="container is-fluid"> {{-- Menggunakan container is-fluid untuk lebar penuh dengan padding --}}
-        <nav class="navbar is-dark" role="navigation" aria-label="main navigation"> {{-- Navbar gelap --}}
+    <div class="container is-fluid is-paddingless-mobile"> {{-- Menggunakan container is-fluid untuk lebar penuh dengan padding --}}
+        <nav class="navbar is-dark is-fixed-top" role="navigation" aria-label="main navigation"> {{-- Navbar gelap dan fixed-top --}}
             <div class="navbar-brand">
                 <a class="navbar-item is-size-4 has-text-weight-bold" href="/"> {{-- Ukuran teks lebih besar dan tebal --}}
                     INFORMASI KATEGORI LAPTOP
@@ -43,25 +53,13 @@
                     <a class="navbar-item" href="/kategori">Kategori Laptop</a>
                     <a class="navbar-item" href="/laptop">Merk Laptop</a>
                 </div>
-                {{-- Anda bisa menambahkan navbar-end di sini jika perlu tombol login/daftar --}}
-                {{-- <div class="navbar-end">
-                    <div class="navbar-item">
-                        <div class="buttons">
-                            <a class="button is-primary is-light">
-                                <strong>Daftar</strong>
-                            </a>
-                            <a class="button is-light">
-                                Masuk
-                            </a>
-                        </div>
-                    </div>
-                </div> --}}
             </div>
         </nav>
         
         {{-- Konten Utama --}}
-        <section class="section"> {{-- Menggunakan kelas section Bulma --}}
-            <div class="box has-background-white p-5"> {{-- Menggunakan box dengan background putih dan padding --}}
+        {{-- Menambahkan padding-top untuk mengatasi navbar fixed --}}
+        <section class="section pt-6"> {{-- Menggunakan kelas section Bulma --}}
+            <div class="box has-background-white p-5 mt-6"> {{-- Menggunakan box dengan background putih dan padding --}}
                 @yield('konten')
             </div>
         </section>
